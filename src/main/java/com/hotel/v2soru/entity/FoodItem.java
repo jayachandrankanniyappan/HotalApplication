@@ -13,8 +13,8 @@ import lombok.Data;
 public class FoodItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int foodId;
-	private String foodName;
-	private double foodprice;
+	private int foodItemId;
+	private String foodItemName;
+	private double foodItemprice;
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,11 +23,11 @@ public class Admin {
 	private String adminEmail;
 	private long adminContact;
 	private String adminPassword;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<User>user;
-	@OneToMany
+	@OneToMany (cascade = CascadeType.ALL)
 	private List<DeliveryBoy>deliveryboy;
-	@OneToMany
-	private List<Order>order;
+	@OneToMany(cascade = CascadeType.ALL )
+	private List<FoodOrder>order;
 
 }

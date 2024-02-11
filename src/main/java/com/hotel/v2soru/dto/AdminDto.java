@@ -3,7 +3,7 @@ package com.hotel.v2soru.dto;
 import java.util.List;
 
 import com.hotel.v2soru.entity.DeliveryBoy;
-import com.hotel.v2soru.entity.Order;
+import com.hotel.v2soru.entity.FoodOrder;
 import com.hotel.v2soru.entity.User;
 
 import lombok.Getter;
@@ -17,6 +17,6 @@ public class AdminDto {
 	private long adminContact;
 	private List<User>user;
 	private List<DeliveryBoy>deliveryboy;
-	private List<Order>order;
+	private List<FoodOrder>order;
 
 }

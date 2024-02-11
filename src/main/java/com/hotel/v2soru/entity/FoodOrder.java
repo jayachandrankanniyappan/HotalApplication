@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,12 +14,12 @@ import lombok.Data;
 @Entity
 @Component
 @Data
-public class Order {
+public class FoodOrder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderId;
-	@OneToMany
-	private List<FoodItem>items;
-	private String orderStatus;
+	private int foodorderId;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<FoodItem>fooditems;
+	private String foodorderStatus;
 
 }

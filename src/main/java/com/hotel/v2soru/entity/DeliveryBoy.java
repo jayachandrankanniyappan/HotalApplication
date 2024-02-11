@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,7 @@ public class DeliveryBoy {
 	private int deliveryboyId;
 	private String deliveryboyName;
 	private long deliveryboyContact;
-	@OneToMany
-	private List<Order>orders;
+	@OneToMany(cascade = CascadeType.ALL )
+	private List<FoodOrder>orders;
 
 }
