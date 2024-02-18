@@ -1,5 +1,6 @@
 package com.hotel.v2soru.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class UserDao {
 		}
 		return null;
 	}
+	
+	public List<User>findAllUser(){
+		return repo.findAll();
+	}
 	public User deleteUser(int userId) {
 		User user=findUser(userId);
 		if(user!=null) {
@@ -39,6 +44,9 @@ public class UserDao {
 			repo.save(user);
 		}
 		return null;
+	}
+	public User findByEmail(String userEmail) {
+		return repo.findByEmail(userEmail);
 	}
 
 }

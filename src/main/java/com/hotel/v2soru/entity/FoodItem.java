@@ -14,7 +14,8 @@ public class FoodItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int foodItemId;
+	
 	private String foodItemName;
-	private double foodItemprice;
+	private double foodItemcostperitem;
 
 }

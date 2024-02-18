@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.hotel.v2soru.dao.DeliveryBoyDao;
+import com.hotel.v2soru.dao.FoodOrderDao;
 import com.hotel.v2soru.entity.DeliveryBoy;
+import com.hotel.v2soru.entity.FoodOrder;
 import com.hotel.v2soru.exception.DeliveryBoyListNotFound;
 import com.hotel.v2soru.exception.DeliveryBoyNotFound;
 import com.hotel.v2soru.util.ResponseStructure;
@@ -17,6 +19,8 @@ import com.hotel.v2soru.util.ResponseStructure;
 public class DeliveryBoyService {
 	@Autowired
 	DeliveryBoyDao ddao;
+	@Autowired
+	FoodOrderDao fodao;
 	
 	public ResponseEntity<ResponseStructure<DeliveryBoy>> saveDeliveryBoy(DeliveryBoy deliveryboy) {
 		ResponseStructure<DeliveryBoy>structure=new ResponseStructure<DeliveryBoy>();
@@ -67,6 +71,23 @@ public class DeliveryBoyService {
 			return new ResponseEntity<ResponseStructure<List<DeliveryBoy>>>(structure,HttpStatus.FOUND);
 		}
 		throw new DeliveryBoyListNotFound("DeliveryBoy List not found");
+	}
+	
+	public ResponseEntity<ResponseStructure<DeliveryBoy>>assignDeliveryBoyToFoodOrder(int deliveryboyId,int foodorderId){
+		DeliveryBoy deliveryboy=ddao.findDeliveryBoy(deliveryboyId);
+		FoodOrder foodorder=fodao.findFoodOrder(foodorderId);
+		if(deliveryboy!=null) {
+			if(foodorder!=null) {
+				deliveryboy.getFoodorders().add(foodorder);
+				ResponseStructure<DeliveryBoy>structure=new ResponseStructure<DeliveryBoy>();
+				structure.setMessage("assigned deliveryboy to foodorder");
+				structure.setStatus(HttpStatus.OK.value());
+				structure.setData(ddao.updateDeliveryBoy(deliveryboy, deliveryboy.getDeliveryboyId()));
+				return new ResponseEntity<ResponseStructure<DeliveryBoy>>(structure,HttpStatus.OK);
+			}
+			return null;
+		}
+		return null;
 	}
 
 }

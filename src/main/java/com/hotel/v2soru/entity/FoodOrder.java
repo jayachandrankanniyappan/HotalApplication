@@ -19,7 +19,8 @@ public class FoodOrder {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int foodorderId;
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<FoodItem>fooditems;
-	private String foodorderStatus;
+	private List<FoodItem>foodorderitems;
+	private double totalcost;
+	private OrderStatus orderstatus;
 
 }

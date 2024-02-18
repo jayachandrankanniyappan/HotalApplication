@@ -1,5 +1,6 @@
 package com.hotel.v2soru.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class AdminDao {
 		}
 		return null;
 	}
+	
+	public List<Admin>findAllAdmin(){
+		return repo.findAll();
+	}
 	public Admin deleteAdmin(int adminId) {
 		Admin admin=findAdmin(adminId);
 		if(admin!=null) {
@@ -32,13 +37,16 @@ public class AdminDao {
 		return null;
 	}
 	
-	public Admin updateAdmin(Admin admin,int adminId) {
+	public Admin updateAdmin(Admin admin,int  adminId) {
 		Admin exadmin=findAdmin(adminId);
 		if(exadmin!=null) {
 			admin.setAdminId(adminId);
 			repo.save(admin);
 		}
 		return null;
+	}
+	public Admin findByEmail(String adminEmail) {
+		return repo.findByEmail(adminEmail);
 	}
 	
 	

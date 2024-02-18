@@ -18,7 +18,7 @@ import com.hotel.v2soru.service.FoodItemService;
 import com.hotel.v2soru.util.ResponseStructure;
 
 @RestController
-@RequestMapping("FoodItem")
+@RequestMapping("Fooditem")
 public class FoodItemController {
 	@Autowired
 	FoodItemService service;

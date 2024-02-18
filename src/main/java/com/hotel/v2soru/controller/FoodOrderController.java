@@ -43,6 +43,14 @@ public class FoodOrderController {
 	public ResponseEntity<ResponseStructure<List<FoodOrder>>>findAllFoodOrder(){
 		return service.findAllFoodOrder();
 	}
+	@PutMapping("assignFoodOrderToFoodItem")
+	public ResponseEntity<ResponseStructure<FoodOrder>>assignFoodOrderToFoodItem(@RequestParam int foodorderId,@RequestParam int foodItemId){
+		return service.assignFoodOrderToFoodItem(foodorderId, foodItemId);
+	}
+	@PutMapping("removefooditem")
+	public ResponseEntity<ResponseStructure<FoodOrder>>removeFoodOrder(@RequestParam int foodorderId,@RequestParam int foodItemId){
+		return service.removeFoodOrder(foodorderId, foodItemId);
+	}
 
 
 }

@@ -43,5 +43,9 @@ public class DeliveryBoyController {
 	public ResponseEntity<ResponseStructure<List<DeliveryBoy>>>findAllDeliveryBoy(){
 		return service.findAllDeliveryBoy();
 	}
+	@PutMapping("assignDeliveryBoyToFoodOrder")
+	public ResponseEntity<ResponseStructure<DeliveryBoy>>assignDeliveryBoyToFoodOrder(@RequestParam int deliveryboyId,@RequestParam int foodorderId){ 
+		return service.assignDeliveryBoyToFoodOrder(deliveryboyId, foodorderId);
+	}
 
 }
